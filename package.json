@@ -1,0 +1,35 @@
+{
+  "name": "before-storybook",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "fwoosh": "fwoosh dev",
+    "build-fwoosh": "fwoosh build"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@fwoosh/panel-actions": "^0.0.126",
+    "@fwoosh/panel-designs": "^0.0.126",
+    "@fwoosh/panel-props": "^0.0.126",
+    "@fwoosh/panel-source": "^0.0.126",
+    "@fwoosh/react": "^0.0.126",
+    "@fwoosh/tool-measure": "^0.0.126",
+    "@fwoosh/tool-viewport": "^0.0.126",
+    "@fwoosh/tool-zoom": "^0.0.126",
+    "@fwoosh/types": "^0.0.126",
+    "@radix-ui/colors": "^0.1.8",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "fwoosh": "^0.0.126",
+    "prop-types": "^15.8.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}
