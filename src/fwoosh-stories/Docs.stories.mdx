@@ -1,0 +1,184 @@
+---
+title: Configuration
+---
+
+# Configuration
+
+All configuration for fwoosh is done via a fwoosh config file.
+
+The following file are valid configuration files:
+
+- `fwoosh.config.ts`
+- `fwoosh.config.mjs`
+
+## Options
+
+### `title`
+
+Customize the title in the header.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  title: "My Design System",
+};
+```
+
+### `stories`
+
+Customize the glob used to match story files.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  stories: ["src/design-system/**/*.stories.(mdx|tsx)"],
+};
+```
+
+### `plugins`
+
+Provide an array of plugins to use with fwoosh.
+
+
+### `outDir`
+
+Customize the directory build output files are put in.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  outDir: "dist",
+};
+```
+
+### `setup`
+
+Provide a global setup file for your stories.
+Typically used to import global global assets such as CSS.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  setup: "./path/to/setup.ts",
+};
+```
+
+### `syntaxTheme`
+
+Use a shiki theme for syntax highlighting.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  syntaxTheme: "nord",
+};
+```
+
+### `theme`
+
+Override values in the default theme.
+Fwoosh uses [stitches](https://stitches.dev/docs/tokens) for styling refer to their docs and the [default theme]() for available values.
+
+You can either define the theme directly in your `fwoosh.config.ts`:
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  theme: [
+    // Define your theme here
+  ],
+};
+```
+
+You can also use a path or a package name for configuring the theme.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  theme: "@my-company/fwoosh-theme",
+};
+```
+
+Visit the theming docs for more information about theming.
+
+### `componentOverrides`
+
+Override a host of presentation and layout components.
+
+> BEWARE! This is a powerful API, make sure you look up what the base component is
+> doing before overriding it.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  componentOverrides: "./path/to/componentOverrides.tsx",
+};
+```
+
+Visit the override docs for more information about overriding components.
+
+### `open`
+
+Control whether the dev server opens a browser window.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  open: "docs", // "workbench" | "docs"
+};
+```
+
+### `modifyViteConfig`
+
+Modify the Vite configuration used to load your fwoosh instance.
+
+```ts fwoosh.config.ts
+import tsconfigPaths from "vite-tsconfig-paths";
+
+export const config: FwooshConfig = {
+  modifyViteConfig: (config) => {
+    config.plugins = config.plugins || [];
+    config.plugins.unshift(
+      tsconfigPaths({
+        projects: [path.join(process.cwd(), "tsconfig.dev.json")],
+      })
+    );
+
+    return config;
+  },
+};
+```
+
+### `sortSidebarItems`
+
+Modify the sorting of items in the sidebar.
+
+```ts fwoosh.config.ts
+import tsconfigPaths from "vite-tsconfig-paths";
+
+export const config: FwooshConfig = {
+  sortSidebarItems: (a, b) => {
+    if (a.name.include("TEST") || b.name.include("TEST")) {
+      return a.name.localeCompare(b.name);
+    }
+
+    // Return undefined to fall back to default sorting
+  },
+};
+```
+
+### `docgen`
+
+Generate docs for only these files.
+This is only needed during build time where we generate docs for all files.
+During dev we only generate docs for the component that's being viewed.
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  docgen: { include: ["**/packages/components/**/*"] },
+};
+```
+
+### `basename`
+
+Base path to load assets from.
+If you serve your website from a subdirectory you'll need to set this.
+
+For example if you serve your website from https://example.com/docs:
+
+```ts fwoosh.config.ts
+export const config: FwooshConfig = {
+  basePath: "/docs",
+};
+```

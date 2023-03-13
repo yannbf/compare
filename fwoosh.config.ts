@@ -12,6 +12,8 @@ import MeasurePanelPlugin from '@fwoosh/tool-measure'
 
 export const config = {
   title: '@fwoosh/react',
+  // stories: ['src/storybook-stories/**/*.stories.(mdx|tsx)'],
+  stories: ['src/fwoosh-stories/**/*.stories.(mdx|tsx)'],
   syntaxTheme: 'poimandres',
   setup: path.resolve('./config/fwoosh-setup.ts'),
   theme: path.resolve('./config/fwoosh-theme.ts'),

@@ -7,7 +7,9 @@ export const meta: ReactMeta = {
   title: "Components/Buttons/Button",
   component: Button,
   parameters: {
-    designs: "https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File",
+    designs: {
+      spec: "https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File",
+    }
   },
 };
 
